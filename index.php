@@ -47,7 +47,14 @@
          });
   
         $('#boton1').click(function(){
-            $('#principal').load("login.php");
+            //leo el contenido de las cajas de nombre y contraseña
+            var _cajaNombre = $('#cajaNombre').val();
+            var _cajaPassword = $('#cajaPassword').val();
+            
+            $('#principal').load("login.php",{
+                cajaNombre : _cajaNombre,
+                cajaPassword : _cajaPassword
+            });
         });
     </script>
 </html>
