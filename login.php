@@ -1,13 +1,24 @@
 <?php
 include ('misFunciones.php');
 
+function limpiaPalabra($palabra){
+    //filtro muy básico para evitar la inyeccion SQL
+    $palabra = trim($palabra, "'");
+    $palabra = trim($palabra, " ");
+    $palabra = trim($palabra, "-");
+    $palabra = trim($palabra, "`");
+    $palabra = trim($palabra, '"');
+    return $palabra;
+}
+
 $mysqli = conectaBBDD();
 
- $cajaNombre = $_POST['cajaNombre'];
+ $cajaNombre = limpiaPalabra($_POST['cajaNombre']);
  
- $cajaPassword = $_POST['cajaPassword'];
+ $cajaPassword = limpiaPalabra($_POST['cajaPassword']);
 
 
+ 
 //echo 'Has escrito el usuario: '.$cajaNombre.' y la contraseña: '.$cajaPassword; 
  
  $resultadoQuery = $mysqli -> query("SELECT * FROM usuarios 
