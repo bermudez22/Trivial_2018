@@ -8,7 +8,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         
     </head>
-    <body style="background-color:  #666">
+    <body style="background-color:  #666; color:white; ">
 
         <div class="container" id="principal">
             <div class ="row">
@@ -45,7 +45,7 @@
         $.validate({
           lang: 'es'
          });
-  
+         
         $('#boton1').click(function(){
             //leo el contenido de las cajas de nombre y contraseña
             var _cajaNombre = $('#cajaNombre').val();
