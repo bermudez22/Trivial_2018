@@ -59,10 +59,10 @@ $listaPreguntas = array();
  function sigue(){
      numeroPregunta =  Math.floor(Math.random() * listaPreguntas.length) ;
     $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
-    $('#r1').text(listaPreguntas[numeroPregunta][2]);
-    $('#r2').text(listaPreguntas[numeroPregunta][3]);
-    $('#r3').text(listaPreguntas[numeroPregunta][4]);
-    $('#r4').text(listaPreguntas[numeroPregunta][5]);
+    $('#r1').text(listaPreguntas[numeroPregunta][2]).click(function(){sigue();});
+    $('#r2').text(listaPreguntas[numeroPregunta][3]).click(function(){sigue();});
+    $('#r3').text(listaPreguntas[numeroPregunta][4]).click(function(){sigue();});
+    $('#r4').text(listaPreguntas[numeroPregunta][5]).click(function(){sigue();});
  }
  
     
