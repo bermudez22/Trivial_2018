@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();  //inicia la sesión del navegador en el servidor PHP
