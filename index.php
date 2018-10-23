@@ -6,15 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <title>PRUEBA DE PHP CON BOOTSTRAP</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/regular.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/solid.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body style="background-color:  #666; color:white; ">
 
         <div class="container" id="principal">
             <div class ="row">
-                <div class="col-12">
+                <div class="col-11">
                     <h2 class="text-center" style="color:white;">EJEMPLO DE INICIO SESIÓN EN PHP</h2> 
                 </div>
+                <div class="col-1">
+                    <span class="fas fa-poo fa-2x" onclick="registra();"></span>
+                </div>                
+                
             </div>
             <div class ="row">
                 <div class="col-4">
@@ -57,5 +63,9 @@
                 cajaPassword : _cajaPassword
             });
         });
+        
+        function registra(){
+            $('#principal').load("registra.php");            
+        }
     </script>
 </html>
