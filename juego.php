@@ -55,7 +55,46 @@ $listaPreguntas = array();
     }
     var progreso;
     var segundo = 0;
-    //temporizador de la barra
+    iniciaTemporizador();
+    
+    //cargo el array php de preguntas en una variable javascript
+    var listaPreguntas = <?php echo json_encode($listaPreguntas); ?>;
+    //calculo un numero aleatorio
+    var numeroPregunta = calculaNumeroPregunta();
+    //dibujo los textos en los botones correspondientes
+    sigue();
+ 
+ 
+function sigue(){
+    numeroPregunta = calculaNumeroPregunta();
+    $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
+    $('#r1').text(listaPreguntas[numeroPregunta][2]).click(function(e){cambiaPregunta(e,1);});
+    $('#r2').text(listaPreguntas[numeroPregunta][3]).click(function(e){cambiaPregunta(e,2);});
+    $('#r3').text(listaPreguntas[numeroPregunta][4]).click(function(e){cambiaPregunta(e,3);});
+    $('#r4').text(listaPreguntas[numeroPregunta][5]).click(function(e){cambiaPregunta(e,4);});
+ }
+ 
+function cambiaPregunta(e,num){
+     e.stopImmediatePropagation();
+     if (num == listaPreguntas[numeroPregunta][6]){
+        correcta();
+     }
+     else {
+        incorrecta();
+        //alert ("la correcta es "+listaPreguntas[numeroPregunta][6]+ "   "+ num)
+     }
+ }
+ 
+ function correcta(){
+     
+ }
+ 
+ function incorrecta(){
+     
+ }
+ 
+function iniciaTemporizador(){
+        //temporizador de la barra
     clearInterval(progreso);
     progreso = setInterval(function(){
         var caja = $("#cajatiempo");
@@ -81,24 +120,11 @@ $listaPreguntas = array();
         tiempo.text(segundo);
     }, 3600);
     
-    
-    //cargo el array php de preguntas en una variable javascript
-    var listaPreguntas = <?php echo json_encode($listaPreguntas); ?>;
-    //calculo un numero aleatorio
-    var numeroPregunta =  Math.floor(Math.random() * listaPreguntas.length) ;
-    //dibujo los textos en los botones correspondientes
-    sigue();
- 
- 
- function sigue(){
-    
-    numeroPregunta =  Math.floor(Math.random() * listaPreguntas.length) ;
-    $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
-    $('#r1').text(listaPreguntas[numeroPregunta][2]).click(function(e){e.stopImmediatePropagation();sigue();});
-    $('#r2').text(listaPreguntas[numeroPregunta][3]).click(function(e){e.stopImmediatePropagation();sigue();});
-    $('#r3').text(listaPreguntas[numeroPregunta][4]).click(function(e){e.stopImmediatePropagation();sigue();});
-    $('#r4').text(listaPreguntas[numeroPregunta][5]).click(function(e){e.stopImmediatePropagation();sigue();});
- }
- 
-    
+} 
+
+
+function calculaNumeroPregunta(){
+    return Math.floor(Math.random() * listaPreguntas.length) ;
+}
+
 </script>    
