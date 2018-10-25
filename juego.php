@@ -65,8 +65,11 @@ $listaPreguntas = array();
  
  
 function sigue(){
+    $("[id*='resp']").removeClass("btn-danger").addClass("btn-success");
+    iniciaTemporizador();
     numeroPregunta = calculaNumeroPregunta();
     $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
+    $("[id*='resp']").prop("onclick", null).off("click");
     $('#resp1').text(listaPreguntas[numeroPregunta][2]).click(function(e){cambiaPregunta(e,1);});
     $('#resp2').text(listaPreguntas[numeroPregunta][3]).click(function(e){cambiaPregunta(e,2);});
     $('#resp3').text(listaPreguntas[numeroPregunta][4]).click(function(e){cambiaPregunta(e,3);});
@@ -75,25 +78,34 @@ function sigue(){
  
 function cambiaPregunta(e,num){
      e.stopImmediatePropagation();
+      //cambia a rojo las respuestas incorrectas   
+     $("[id*='resp']").removeClass("btn-success").addClass("btn-danger");
+     //, y a verde la correcta 
+     $("#resp"+num).removeClass("btn-danger").addClass("btn-success").prop("onclick", null).off("click");
+     detieneTemporizador();
+     $("#resp"+num).click(function(e){e.stopImmediatePropagation();sigue();});
      if (num == listaPreguntas[numeroPregunta][6]){
         correcta(num);
      }
      else {
         incorrecta();
-        //alert ("la correcta es "+listaPreguntas[numeroPregunta][6]+ "   "+ num)
      }
  }
  
- function correcta(){
-     
+ function correcta(num){
+     $("#resp"+num).append("   CORRECTO! pulsa para seguir");
  }
  
- function incorrecta(){
-     $("[id*='resp']").removeClass("btn-success").addClass("btn-danger");
+ function incorrecta(num){
+    
  }
- 
+function detieneTemporizador(){
+    clearInterval(progreso);
+} 
 function iniciaTemporizador(){
         //temporizador de la barra
+    segundo = 0;
+    $("#tiempo").width(0).text("");
     clearInterval(progreso);
     progreso = setInterval(function(){
         var caja = $("#cajatiempo");
