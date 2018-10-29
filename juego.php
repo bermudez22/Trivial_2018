@@ -65,7 +65,7 @@ $listaPreguntas = array();
  
  
 function sigue(){
-    $("[id*='resp']").removeClass("btn-danger").addClass("btn-success");
+    $("[id*='resp']").removeClass("btn-dark").removeClass("btn-secondary").removeClass("btn-danger").addClass("btn-success");
     iniciaTemporizador();
     numeroPregunta = calculaNumeroPregunta();
     $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
@@ -78,27 +78,28 @@ function sigue(){
  
 function cambiaPregunta(e,num){
      e.stopImmediatePropagation();
-      //cambia a rojo las respuestas incorrectas   
-     $("[id*='resp']").removeClass("btn-success").addClass("btn-danger");
-     //, y a verde la correcta 
-     $("#resp"+num).removeClass("btn-danger").addClass("btn-success").prop("onclick", null).off("click");
-     detieneTemporizador();
+     var correcta = listaPreguntas[numeroPregunta][6];
+     //deshabilita los clicks en los botones
+     $("[id*='resp']").prop("onclick", null).off("click");
+     //agrega el click al boton que se ha pulsado, para seguir la partida
      $("#resp"+num).click(function(e){e.stopImmediatePropagation();sigue();});
-     if (num == listaPreguntas[numeroPregunta][6]){
-        correcta(num);
+     detieneTemporizador();
+     if (num == correcta){
+        //cambia a gris las respuestas incorrectas   
+        $("[id*='resp']").removeClass("btn-success").addClass("btn-secondary");
+        //, y a verde la correcta 
+        $("#resp"+num).removeClass("btn-danger").addClass("btn-success");
+        $("#resp"+num).append("   CORRECTO! pulsa para seguir");
      }
      else {
-        incorrecta();
+        $("[id*='resp']").removeClass("btn-success").addClass("btn-danger");
+        $("#resp"+num).removeClass("btn-danger").addClass("btn-dark").append("   INCORRECTO! pulsa para seguir");
+        $("#resp"+correcta).removeClass("btn-danger").addClass("btn-success");
      }
  }
  
- function correcta(num){
-     $("#resp"+num).append("   CORRECTO! pulsa para seguir");
- }
  
- function incorrecta(num){
-    
- }
+
 function detieneTemporizador(){
     clearInterval(progreso);
 } 
