@@ -2,15 +2,20 @@
 //aqui no hace falta iniciar la sesión porque 
 //este código se carga con require
 ?>
+ 
 
-<div id ="menu" style="color:white; ">
-    <p></p>
-    <p><a  class="btn btn-block btn-dark disabled" ><?php echo $_SESSION['nombreUsuario']?>, demuestra que estás listo para la EVAU </a></p>
-    <p><a id="sigue1" class="btn btn-block btn-primary" onclick="sigue('1')">HISTORIA</a></p>
-    <p><a id="sigue2" class="btn btn-block btn-primary" onclick="sigue('2')">ECONOMIA</a></p>
-    <p><a id="sigue3" class="btn btn-block btn-primary" onclick="sigue('3')">FILOSOFIA</a></p>
+<div id ="menu" style="color:white;">
+    <div align="center">
+        <br>
+    <font class="text-center"color="orange" size="100">TRIVIAL EVAU</font>
+    </div>
+    <p><a class="btn btn-block btn-dark disabled" > trivial , demuestra que estás listo para la EVAU </a></p>
+    <p><a id="sigue1" class="btn btn-block btn-dark" onclick="sigue('1')">HISTORIA</a></p>
+    <p><a id="sigue2" class="btn btn-block btn-danger" onclick="sigue('2')">ECONOMIA</a></p>
+    <p><a id="sigue3" class="btn btn-block btn-secondary" onclick="sigue('3')">FILOSOFIA</a></p>
     <p><a id="sigue4" class="btn btn-block btn-primary" onclick="sigue('4')">LENGUA Y LITERATURA</a></p>
-    <p><a id="sigue5" class="btn btn-block btn-primary" onclick="sigue('5')">INGLÉS</a></p>
+    <p><a id="sigue5" class="btn btn-block btn-danger" onclick="sigue('5')">INGLÉS</a></p>
+    
 </div>
 
 <script>
@@ -43,7 +48,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Hola K Ase telekinesis o k ase</p>
+        <p></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Salvar</button>
