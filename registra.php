@@ -16,6 +16,8 @@
                         <button id="volver" class="btn btn-warning btn-block" type="submit">Cancelar</button>
                         <br/>
                         <button id="boton1" class="btn btn-success btn-block" type="submit">REGISTRA!</button>                        
+                        <br/>
+                        <p><a  class="btn btn-block btn-warning" style="background-color:transparent;" onclick="inicio();"> Volver al Inicio</a></p>
                         <br/><br/>
                 </div>
                 <div class="col-4">
@@ -28,7 +30,7 @@
             var _cajaNombre = $('#cajaNombre').val();
             var _cajaPassword = $('#cajaPassword').val();
             var _cajaPassword2 = $('#cajaPassword2').val();
-            if (_cajaPassword != _cajaPassword2){
+            if (_cajaPassword !== _cajaPassword2){
                 alert('LAS CONTRASEÑAS NO COINCIDEN');
             }
             else{
@@ -37,5 +39,9 @@
                     cajaPassword : _cajaPassword
                 });
             }
+            
         });
+         function  inicio(){
+            $('#principal').load("index.php");            
+        }
     </script> 
